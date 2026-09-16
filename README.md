@@ -171,12 +171,6 @@ python tools/MeoGenerate/meo_generate.py generate \
 
 角色音色参数位于 `meogenerate/granular.py` 的 `VOICE_PROFILES`。
 
-## Unity 使用
-
-输出 WAV 为标准单声道 16-bit PCM，可直接导入 Unity `Assets`。建议离线批量生成并审核，不要在游戏运行时加载 PyTorch 或 FunASR。
-
-`render.events` 可用于同步口型、气泡或角色动画。
-
 ## 测试
 
 ```bash
