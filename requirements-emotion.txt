@@ -1,0 +1,6 @@
+# Optional: only needed when --input/analyze uses emotion2vec.
+# For a CUDA-specific PyTorch build, install torch from pytorch.org first.
+funasr>=1.2.0
+modelscope>=1.20.0
+huggingface_hub>=0.24.0
+torch>=2.0.0
