@@ -103,9 +103,14 @@ def build_parser() -> argparse.ArgumentParser:
     generate.add_argument(
         "--plan-output",
         type=Path,
-        help="render manifest path; defaults next to output WAV",
+        help="render manifest path; also enables manifest output",
     )
-    generate.add_argument("--no-plan", action="store_true", help="do not write a JSON manifest")
+    generate.add_argument(
+        "--plan",
+        action=argparse.BooleanOptionalAction,
+        default=None,
+        help="write a JSON manifest next to the output WAV (default: disabled)",
+    )
     _add_emotion_model_arguments(generate)
 
     analyze = subparsers.add_parser("analyze", help="print emotion2vec scores for a speech file")
@@ -214,7 +219,8 @@ def _command_generate(args: argparse.Namespace) -> int:
         },
     }
     manifest_path = args.plan_output or args.output.with_suffix(".json")
-    if not args.no_plan:
+    write_plan = args.plan is True or (args.plan is None and args.plan_output is not None)
+    if write_plan:
         manifest_path.parent.mkdir(parents=True, exist_ok=True)
         manifest_path.write_text(
             json.dumps(manifest, ensure_ascii=False, indent=2) + "\n",
@@ -222,7 +228,7 @@ def _command_generate(args: argparse.Namespace) -> int:
         )
 
     print(f"Wrote: {args.output} ({rendered.duration:.2f}s, state={state}, seed={seed})")
-    if not args.no_plan:
+    if write_plan:
         print(f"Plan:  {manifest_path}")
     return 0
 

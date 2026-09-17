@@ -1,6 +1,6 @@
 # MeoGenerate
 
-将人类语音转换为带情绪节奏的原创卡通猫语，输出 Unity 可直接导入的 PCM WAV 和可审计 JSON。
+将人类语音转换为带情绪节奏的原创卡通猫语，输出 Unity 可直接导入的 PCM WAV，并可选输出可审计 JSON。
 
 ## 工作方式
 
@@ -78,8 +78,6 @@ python tools/MeoGenerate/meo_generate.py analyze path/to/speech.wav --hub ms
 | `--state`         |                   状态名 | 覆盖情绪到行为状态的自动映射          |
 | `--seed`          |                     整数 | 固定随机结果，便于复现                |
 | `--config`        |                JSON 路径 | 使用自定义行为配置                    |
-| `--plan-output`   |                JSON 路径 | 指定事件清单位置                      |
-| `--no-plan`       |                     开关 | 不写 JSON 清单                        |
 
 完整参数：
 
@@ -89,7 +87,7 @@ python tools/MeoGenerate/meo_generate.py generate --help
 
 ## 默认反转
 
-颗粒提取前默认反转输入波形；情绪识别仍使用未反转的原始语音。输出 JSON 会记录：
+颗粒提取前默认反转输入波形；情绪识别仍使用未反转的原始语音。启用 `--plan` 后，输出 JSON 会记录：
 
 ```json
 {
@@ -112,7 +110,7 @@ python tools/MeoGenerate/meo_generate.py generate \
 
 渲染器约每两个短句加入一次参考喵声，持续约 0.48–0.72 秒。它由当前输入人声的微颗粒生成，并继承说话者音色、行为状态音高和句尾音高漂移。参考喵声覆盖在原短句尾部，通过渐入叠加并保留原声底层，避免突然切换音色。
 
-相关 JSON 字段：
+启用 `--plan` 后的相关 JSON 字段：
 
 - `reference_meow`：该短句是否包含参考喵声；
 - `reference_meow_mix`：混合强度；
@@ -149,7 +147,7 @@ python tools/MeoGenerate/meo_generate.py list-states
 
 未指定 `--duration` 时，输出时长跟随输入，并限制在 2.5–60 秒。渲染器会校准短句和停顿，使实际输出接近目标时长。
 
-使用相同输入、配置和 `--seed` 可复现相同结果。默认在输出 WAV 旁写入同名 JSON，包含：
+使用相同输入、配置和 `--seed` 可复现相同结果。默认只写入 WAV；指定 `--plan` 后会在输出 WAV 旁写入同名 JSON（指定 `--plan-output` 可自定义路径），包含：
 
 - 情绪及置信度；
 - 行为状态和随机种子；
