@@ -16,7 +16,7 @@ Turn human speech into original, Animal Crossing-style cartoon-cat gibberish wit
 
 ## Installation
 
-Run the commands below from the `NekoLang` directory. From the MemeArena repository root:
+Run the commands below from the `NekoLang` directory. From the repository root:
 
 ```bash
 cd NekoLang

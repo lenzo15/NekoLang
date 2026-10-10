@@ -16,7 +16,7 @@
 
 ## 安装
 
-以下命令均在 `NekoLang` 目录下执行。从 MemeArena 仓库根目录进入：
+以下命令均在 `NekoLang` 目录下执行。从仓库根目录进入：
 
 ```bash
 cd NekoLang
