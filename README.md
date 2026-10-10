@@ -2,7 +2,7 @@
 
 [English](README.md) | [简体中文](README_CN.md)
 
-Turn human speech into original cartoon-cat gibberish with emotion-driven rhythm.
+Turn human speech into original, Animal Crossing-style cartoon-cat gibberish with emotion-driven rhythm.
 
 ## How it works
 
