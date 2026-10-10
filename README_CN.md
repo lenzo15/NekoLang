@@ -16,10 +16,10 @@
 
 ## 安装
 
-以下命令均在 `tools/NekoLang` 目录下执行。从 MemeArena 仓库根目录进入：
+以下命令均在 `NekoLang` 目录下执行。从 MemeArena 仓库根目录进入：
 
 ```bash
-cd tools/NekoLang
+cd NekoLang
 ```
 
 基础音频处理需要 Python 3.10+ 和 NumPy：
@@ -76,18 +76,18 @@ python meo_generate.py analyze path/to/speech.wav --hub ms
 
 ## 主要参数
 
-| 参数 | 范围/默认值 | 作用 |
-| --- | --- | --- |
-| `--input` | 必填 | PCM WAV 输入；用于情绪分析和音色提取 |
-| `--output` | 必填 | 输出单声道 16-bit PCM WAV |
-| `--meowiness` | `0–1`，默认 `0.86` | 每个音节的鼻音、共振峰和滑音强度 |
-| `--meow-tail-mix` | `0–0.60`，默认 `0.42` | 参考原声喵声的混合量；设为 `0` 可关闭 |
-| `--voice-rate` | `0.45–1.25`，默认 `0.52` | 发音速度和音节密度 |
-| `--pause-scale` | `0.20–1.0`，默认 `0.50` | 停顿长度比例 |
-| `--duration` | 最长 60 秒 | 目标输出时长；省略时跟随输入时长 |
-| `--state` | 状态名 | 覆盖情绪到行为状态的自动映射 |
-| `--seed` | 整数 | 固定随机结果，便于复现 |
-| `--config` | JSON 路径 | 使用自定义行为配置 |
+| 参数              | 范围/默认值              | 作用                                  |
+| ----------------- | ------------------------ | ------------------------------------- |
+| `--input`         | 必填                     | PCM WAV 输入；用于情绪分析和音色提取  |
+| `--output`        | 必填                     | 输出单声道 16-bit PCM WAV             |
+| `--meowiness`     | `0–1`，默认 `0.86`       | 每个音节的鼻音、共振峰和滑音强度      |
+| `--meow-tail-mix` | `0–0.60`，默认 `0.42`    | 参考原声喵声的混合量；设为 `0` 可关闭 |
+| `--voice-rate`    | `0.45–1.25`，默认 `0.52` | 发音速度和音节密度                    |
+| `--pause-scale`   | `0.20–1.0`，默认 `0.50`  | 停顿长度比例                          |
+| `--duration`      | 最长 60 秒               | 目标输出时长；省略时跟随输入时长      |
+| `--state`         | 状态名                   | 覆盖情绪到行为状态的自动映射          |
+| `--seed`          | 整数                     | 固定随机结果，便于复现                |
+| `--config`        | JSON 路径                | 使用自定义行为配置                    |
 
 完整参数：
 
@@ -131,14 +131,14 @@ python meo_generate.py generate \
 
 ## 情绪与行为状态
 
-| 语音情绪 | 默认状态 |
-| --- | --- |
-| `angry` / `disgusted` | `angry` |
-| `fearful` | `fearful` |
-| `happy` | `affectionate` |
-| `sad` | `distressed` |
-| `surprised` | `startled` |
-| `neutral` / `other` / `unknown` | `neutral` |
+| 语音情绪                        | 默认状态       |
+| ------------------------------- | -------------- |
+| `angry` / `disgusted`           | `angry`        |
+| `fearful`                       | `fearful`      |
+| `happy`                         | `affectionate` |
+| `sad`                           | `distressed`   |
+| `surprised`                     | `startled`     |
+| `neutral` / `other` / `unknown` | `neutral`      |
 
 情绪识别不能判断“打架”或“催促”等语义场景，需要时请显式指定：
 

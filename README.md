@@ -16,10 +16,10 @@ Turn human speech into original cartoon-cat gibberish with emotion-driven rhythm
 
 ## Installation
 
-Run the commands below from the `tools/NekoLang` directory. From the MemeArena repository root:
+Run the commands below from the `NekoLang` directory. From the MemeArena repository root:
 
 ```bash
-cd tools/NekoLang
+cd NekoLang
 ```
 
 Basic audio processing requires Python 3.10+ and NumPy:
@@ -76,18 +76,18 @@ python meo_generate.py analyze path/to/speech.wav --hub ms
 
 ## Main options
 
-| Option | Range / default | Purpose |
-| --- | --- | --- |
-| `--input` | Required | PCM WAV input for emotion analysis and voice timbre extraction |
-| `--output` | Required | Output mono 16-bit PCM WAV |
-| `--meowiness` | `0–1`, default `0.86` | Nasal character, formant shaping, and pitch-slide strength per syllable |
-| `--meow-tail-mix` | `0–0.60`, default `0.42` | Source-derived reference meow blend; set to `0` to disable |
-| `--voice-rate` | `0.45–1.25`, default `0.52` | Articulation speed and syllable density |
-| `--pause-scale` | `0.20–1.0`, default `0.50` | Pause duration multiplier |
-| `--duration` | Up to 60 seconds | Target output duration; follows the input duration when omitted |
-| `--state` | State name | Override the automatic emotion-to-behavior mapping |
-| `--seed` | Integer | Fix the random seed for reproducible results |
-| `--config` | JSON path | Use a custom behavior configuration |
+| Option            | Range / default             | Purpose                                                                 |
+| ----------------- | --------------------------- | ----------------------------------------------------------------------- |
+| `--input`         | Required                    | PCM WAV input for emotion analysis and voice timbre extraction          |
+| `--output`        | Required                    | Output mono 16-bit PCM WAV                                              |
+| `--meowiness`     | `0–1`, default `0.86`       | Nasal character, formant shaping, and pitch-slide strength per syllable |
+| `--meow-tail-mix` | `0–0.60`, default `0.42`    | Source-derived reference meow blend; set to `0` to disable              |
+| `--voice-rate`    | `0.45–1.25`, default `0.52` | Articulation speed and syllable density                                 |
+| `--pause-scale`   | `0.20–1.0`, default `0.50`  | Pause duration multiplier                                               |
+| `--duration`      | Up to 60 seconds            | Target output duration; follows the input duration when omitted         |
+| `--state`         | State name                  | Override the automatic emotion-to-behavior mapping                      |
+| `--seed`          | Integer                     | Fix the random seed for reproducible results                            |
+| `--config`        | JSON path                   | Use a custom behavior configuration                                     |
 
 For the complete option list:
 
@@ -131,14 +131,14 @@ Related JSON fields when `--plan` is enabled:
 
 ## Emotions and behavior states
 
-| Speech emotion | Default state |
-| --- | --- |
-| `angry` / `disgusted` | `angry` |
-| `fearful` | `fearful` |
-| `happy` | `affectionate` |
-| `sad` | `distressed` |
-| `surprised` | `startled` |
-| `neutral` / `other` / `unknown` | `neutral` |
+| Speech emotion                  | Default state  |
+| ------------------------------- | -------------- |
+| `angry` / `disgusted`           | `angry`        |
+| `fearful`                       | `fearful`      |
+| `happy`                         | `affectionate` |
+| `sad`                           | `distressed`   |
+| `surprised`                     | `startled`     |
+| `neutral` / `other` / `unknown` | `neutral`      |
 
 Emotion recognition does not infer semantic situations such as fighting or demanding attention. Specify a state explicitly when needed:
 
