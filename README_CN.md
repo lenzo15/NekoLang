@@ -184,3 +184,7 @@ python meo_generate.py generate \
 ```bash
 python -m unittest discover -s tests -v
 ```
+
+## 开源协议
+
+NekoLang 使用 [MIT 协议](LICENSE) 开源。

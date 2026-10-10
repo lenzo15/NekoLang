@@ -184,3 +184,7 @@ Character voice parameters are defined in `VOICE_PROFILES` in [`meogenerate/gran
 ```bash
 python -m unittest discover -s tests -v
 ```
+
+## License
+
+NekoLang is licensed under the [MIT License](LICENSE).
